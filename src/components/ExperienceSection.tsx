@@ -12,7 +12,7 @@ const experiences = [
     date: "Feb 2025 – Present",
     description: (
       <>
-        Configured enterprise wireless access points across 100+ property zones, deployed structured cabling for building expansions while sustaining <strong className="font-bold underline decoration-amber-400 decoration-2">99.9% network uptime</strong>, and cut system downtime by <strong className="font-bold underline decoration-pink-400 decoration-2">25%</strong> through proactive monitoring.
+        Configured enterprise wireless access points across 20+ property zones, deployed structured cabling for building expansions while sustaining <strong className="font-bold underline decoration-amber-400 decoration-2">99.9% network uptime</strong>, and cut system downtime by <strong className="font-bold underline decoration-pink-400 decoration-2">25%</strong> through proactive monitoring.
       </>
     ),
     tags: ["Network Infrastructure", "IT Support", "Troubleshooting"],
