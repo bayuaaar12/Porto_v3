@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-grid-color: rgba(0, 0, 0, 0.05);
+    --bg-paper: #FAFAF6;
+    --text-primary: #18181B;
+  }
+
+  .dark {
+    --bg-grid-color: rgba(255, 255, 255, 0.06);
+    --bg-paper: #141416;
+    --text-primary: #F4F4F5;
+  }
+
+  body {
+    background-color: var(--bg-paper);
+    color: var(--text-primary);
+    background-image: 
+      linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-grid-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: -1px -1px;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background: #FDE68A;
+    color: #000000;
+  }
+}
+
+/* Marker / Highlighter Underline Styling */
+.highlight-marker {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.highlight-marker::before {
+  content: "";
+  position: absolute;
+  bottom: 0.15em;
+  left: -0.15em;
+  right: -0.15em;
+  height: 0.45em;
+  z-index: -1;
+  border-radius: 4px 12px 6px 16px / 12px 6px 14px 4px;
+  transform: rotate(-1deg);
+  opacity: 0.85;
+}
+
+.highlight-yellow::before {
+  background-color: #FDE68A;
+}
+
+.highlight-pink::before {
+  background-color: #FBCFE8;
+}
+
+.highlight-green::before {
+  background-color: #BBF7D0;
+}
+
+.highlight-blue::before {
+  background-color: #BFDBFE;
+}
+
+.dark .highlight-yellow::before {
+  background-color: #d97706;
+  opacity: 0.65;
+}
+
+.dark .highlight-pink::before {
+  background-color: #db2777;
+  opacity: 0.65;
+}
+
+.dark .highlight-green::before {
+  background-color: #059669;
+  opacity: 0.65;
+}
+
+.dark .highlight-blue::before {
+  background-color: #2563eb;
+  opacity: 0.65;
+}
+
+/* Wavy / Marker SVG underline alternative */
+.marker-underline-wavy {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M0,15 Q25,5 50,15 T100,15' fill='none' stroke='%23FDE68A' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 100% 12px;
+  padding-bottom: 4px;
+}
+
+/* Hand Drawn Border Utility */
+.doodle-card {
+  border: 2.5px solid #000000;
+  box-shadow: 4px 4px 0px 0px #000000;
+  border-radius: 16px 6px 14px 8px / 8px 14px 6px 16px;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dark .doodle-card {
+  border: 2.5px solid #E4E4E7;
+  box-shadow: 4px 4px 0px 0px #E4E4E7;
+}
+
+.doodle-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000000;
+}
+
+.dark .doodle-card:hover {
+  box-shadow: 6px 6px 0px 0px #E4E4E7;
+}
+
+/* Button doodle effect */
+.doodle-btn {
+  border: 2.5px solid #000000;
+  box-shadow: 3px 3px 0px 0px #000000;
+  border-radius: 12px 4px 14px 6px / 6px 12px 4px 14px;
+  transition: all 0.15s ease;
+  font-weight: 700;
+}
+
+.dark .doodle-btn {
+  border-color: #F4F4F5;
+  box-shadow: 3px 3px 0px 0px #F4F4F5;
+}
+
+.doodle-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px 0px #000000;
+}
+
+.dark .doodle-btn:hover {
+  box-shadow: 5px 5px 0px 0px #F4F4F5;
+}
+
+.doodle-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px 0px #000000;
+}
+
+.dark .doodle-btn:active {
+  box-shadow: 1px 1px 0px 0px #F4F4F5;
+}
+
+/* Tape / Sticky Note Sticker */
+.tape-top {
+  position: relative;
+}
+
+.tape-top::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 80px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+  border: 2px solid var(--bg-paper);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #E4E4E7;
+}
