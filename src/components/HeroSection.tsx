@@ -101,7 +101,7 @@ export default function HeroSection() {
                 {/* Avatar Frame / Polaroid Doodle Photo Slot */}
                 <div className="w-48 h-52 sm:w-52 sm:h-56 rounded-2xl border-3 border-black dark:border-zinc-100 bg-[#BFDBFE] dark:bg-blue-900/40 p-1.5 relative overflow-hidden shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#fff] flex items-center justify-center mb-4 group transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                   <img
-                    src="/profile.jpg"
+                    src="/profile.jpeg"
                     alt="Bayu"
                     className="w-full h-full object-cover object-[center_25%] rounded-xl transform group-hover:scale-105 transition-transform duration-300"
                   />
