@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, ArrowDownRight, Sparkles, Code2, Coffee } from "lucide-react";
+import { Github, ArrowDownRight, Sparkles, Code2 } from "lucide-react";
 
 export default function HeroSection() {
   const scrollTo = (id: string) => {
@@ -17,9 +17,6 @@ export default function HeroSection() {
       {/* Background Floating Doodles */}
       <div className="absolute top-10 left-[5%] opacity-30 dark:opacity-20 pointer-events-none select-none hidden lg:block animate-float">
         <Sparkles className="w-8 h-8 text-amber-500" />
-      </div>
-      <div className="absolute bottom-10 left-[45%] opacity-30 dark:opacity-20 pointer-events-none select-none hidden lg:block animate-wiggle">
-        <span className="font-handwriting text-2xl text-pink-500">✨ code & coffee</span>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -102,13 +99,11 @@ export default function HeroSection() {
               {/* Main Avatar Container */}
               <div className="doodle-card p-6 bg-white dark:bg-[#1E1E22] relative z-10 flex flex-col items-center text-center">
                 {/* Avatar Frame / Image Slot */}
-                <div className="w-44 h-44 sm:w-48 sm:h-48 rounded-full border-3 border-black dark:border-white bg-[#BFDBFE] dark:bg-blue-900/40 p-2 relative overflow-hidden shadow-inner flex items-center justify-center mb-4 group">
-                  {/* DiceBear Notionists Hand-Drawn Avatar Placeholder */}
-                  {/* USER CAN SWAP THIS <img> WITH THEIR OWN PHOTO EASILY */}
+                <div className="w-44 h-44 sm:w-48 sm:h-48 rounded-full border-3 border-black dark:border-white bg-[#BFDBFE] dark:bg-blue-900/40 p-1 relative overflow-hidden shadow-inner flex items-center justify-center mb-4 group">
                   <img
-                    src="https://api.dicebear.com/7.x/notionists/svg?seed=Bayu&backgroundColor=transparent&shirtColor=fde68a,fbcfe8,bbf7do"
-                    alt="Bayu Hand-drawn Avatar"
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    src="/profile.jpg"
+                    alt="Bayu"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-300 rounded-full"
                   />
                 </div>
 
@@ -126,14 +121,10 @@ export default function HeroSection() {
                 </div>
 
                 {/* Handwritten Floating Notes */}
-                <div className="mt-4 pt-3 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 w-full flex items-center justify-between text-xs font-mono text-zinc-600 dark:text-zinc-400">
+                <div className="mt-4 pt-3 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 w-full flex items-center justify-center text-xs font-mono text-zinc-600 dark:text-zinc-400">
                   <span className="flex items-center gap-1">
                     <Code2 className="w-3.5 h-3.5 text-blue-500" />
                     Problem Solver
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Coffee className="w-3.5 h-3.5 text-amber-600" />
-                    Coffee Fueled
                   </span>
                 </div>
               </div>
@@ -141,7 +132,7 @@ export default function HeroSection() {
               {/* Decorative Corner Sticky Note */}
               <div className="absolute -bottom-4 -right-2 bg-[#FDE68A] dark:bg-amber-400 text-zinc-900 border-2 border-black p-2.5 shadow-[3px_3px_0px_0px_#000] rounded-lg transform rotate-6 z-20 hidden sm:block">
                 <p className="font-heading font-bold text-xs leading-none">
-                  Open for Internships! ⚡
+                  Open for Work! ⚡
                 </p>
               </div>
             </div>
