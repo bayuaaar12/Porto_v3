@@ -22,7 +22,7 @@ const experiences = [
 
 export default function ExperienceSection() {
   return (
-    <section className="py-14 relative">
+    <section id="experience" className="py-14 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Title with Dashed Line */}
         <div className="flex items-center gap-4 mb-10">
