@@ -139,6 +139,31 @@ export default function HeroSection() {
           </motion.div>
 
         </div>
+
+        {/* Quick Highlights Metrics Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          <div className="doodle-card p-4 bg-white dark:bg-[#1E1E22] text-center">
+            <p className="font-heading font-extrabold text-2xl sm:text-3xl text-amber-500">99.9%</p>
+            <p className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 mt-1">Network Uptime</p>
+          </div>
+          <div className="doodle-card p-4 bg-white dark:bg-[#1E1E22] text-center">
+            <p className="font-heading font-extrabold text-2xl sm:text-3xl text-blue-500">4+</p>
+            <p className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 mt-1">Core Projects</p>
+          </div>
+          <div className="doodle-card p-4 bg-white dark:bg-[#1E1E22] text-center">
+            <p className="font-heading font-extrabold text-2xl sm:text-3xl text-emerald-500">20+</p>
+            <p className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 mt-1">AP Zones Managed</p>
+          </div>
+          <div className="doodle-card p-4 bg-white dark:bg-[#1E1E22] text-center">
+            <p className="font-heading font-extrabold text-2xl sm:text-3xl text-pink-500">4</p>
+            <p className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 mt-1">Certifications</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
