@@ -1,10 +1,19 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Mail, Linkedin, Sparkles, Send } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Linkedin, Copy, Check, Sparkles } from "lucide-react";
 
 export default function ContactSection() {
+  const [copied, setCopied] = useState(false);
+  const email = "bayuanugrahramadan@gmail.com";
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   return (
     <section id="contact" className="py-16 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -34,17 +43,36 @@ export default function ContactSection() {
             Currently looking for a software engineering internship — always up for a chat about code, coffee, or campus projects.
           </p>
 
-          {/* 2 Buttons */}
+          {/* Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <motion.a
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:bayuanugrahramadan@gmail.com"
+              href={`mailto:${email}`}
               className="doodle-btn px-6 py-3.5 bg-[#FDE68A] hover:bg-[#fcd34d] text-zinc-900 font-heading font-extrabold text-lg flex items-center gap-2 cursor-pointer"
             >
               <Mail className="w-5 h-5 stroke-[2.5]" />
               <span>Drop an Email</span>
             </motion.a>
+
+            <motion.button
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleCopyEmail}
+              className="doodle-btn px-5 py-3.5 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-heading font-extrabold text-lg flex items-center gap-2 cursor-pointer"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-5 h-5 stroke-[2.5] text-emerald-600 dark:text-emerald-400" />
+                  <span className="text-emerald-600 dark:text-emerald-400">Copied! ✨</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-5 h-5 stroke-[2.5]" />
+                  <span>Copy Address</span>
+                </>
+              )}
+            </motion.button>
 
             <motion.a
               whileHover={{ scale: 1.05, rotate: 2 }}
