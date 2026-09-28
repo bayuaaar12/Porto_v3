@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 const experiences = [
   {
@@ -10,6 +10,7 @@ const experiences = [
     company: "The Alana Hotel and Conference Center",
     companyHighlightColor: "highlight-yellow",
     date: "Feb 2025 – Present",
+    isCurrent: true,
     description: (
       <>
         Configured enterprise wireless access points across 20+ property zones, deployed structured cabling for building expansions while sustaining <strong className="font-bold underline decoration-amber-400 decoration-2">99.9% network uptime</strong>, and cut system downtime by <strong className="font-bold underline decoration-pink-400 decoration-2">25%</strong> through proactive monitoring.
@@ -53,9 +54,17 @@ export default function ExperienceSection() {
               <div className="doodle-card p-6 bg-white dark:bg-[#1E1E22] space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-dashed border-zinc-200 dark:border-zinc-700 pb-3">
                   <div>
-                    <h3 className="font-heading text-2xl font-extrabold text-zinc-900 dark:text-zinc-100">
-                      {exp.title}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-heading text-2xl font-extrabold text-zinc-900 dark:text-zinc-100">
+                        {exp.title}
+                      </h3>
+                      {exp.isCurrent && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-500 rounded-full text-[11px] font-mono font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                          Active
+                        </span>
+                      )}
+                    </div>
                     <p className="font-heading text-lg font-bold text-zinc-800 dark:text-zinc-200 mt-0.5">
                       <span className={`highlight-marker ${exp.companyHighlightColor} px-1`}>
                         {exp.company}
