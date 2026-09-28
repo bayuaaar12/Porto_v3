@@ -21,7 +21,8 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="font-heading text-2xl sm:text-3xl font-bold tracking-wide text-zinc-900 dark:text-zinc-100 flex items-center gap-2 group cursor-pointer"
+          aria-label="Bayu Portfolio Home"
+          className="font-heading text-2xl sm:text-3xl font-bold tracking-wide text-zinc-900 dark:text-zinc-100 flex items-center gap-2 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg"
         >
           <span className="text-2xl sm:text-3xl group-hover:rotate-12 transition-transform duration-200">
             💻
@@ -33,22 +34,28 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8 font-heading text-lg font-semibold">
-          <button
-            onClick={() => scrollTo("work")}
-            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all"
-          >
-            Work
-          </button>
+        <nav aria-label="Main Navigation" className="hidden md:flex items-center space-x-8 font-heading text-lg font-semibold">
           <button
             onClick={() => scrollTo("about")}
-            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all"
+            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
           >
             About
           </button>
           <button
+            onClick={() => scrollTo("experience")}
+            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
+          >
+            Experience
+          </button>
+          <button
+            onClick={() => scrollTo("work")}
+            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
+          >
+            Work
+          </button>
+          <button
             onClick={() => scrollTo("skills")}
-            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all"
+            className="text-zinc-800 dark:text-zinc-200 hover:text-amber-600 dark:hover:text-amber-300 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-zinc-800 dark:after:bg-zinc-200 hover:after:w-full after:transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
           >
             Skills
           </button>
@@ -56,7 +63,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05, rotate: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollTo("contact")}
-            className="px-5 py-2 bg-[#FDE68A] hover:bg-[#fcd34d] text-zinc-900 border-[2.5px] border-black shadow-[3px_3px_0px_0px_#000] rounded-[14px_6px_12px_8px] font-heading font-bold text-lg cursor-pointer transition-colors"
+            className="px-5 py-2 bg-[#FDE68A] hover:bg-[#fcd34d] text-zinc-900 border-[2.5px] border-black shadow-[3px_3px_0px_0px_#000] rounded-[14px_6px_12px_8px] font-heading font-bold text-lg cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
           >
             Say Hi!
           </motion.button>
@@ -66,8 +73,8 @@ export default function Navbar() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-zinc-900 dark:text-zinc-100 border-2 border-black dark:border-white rounded-lg bg-[#FAFAF6] dark:bg-[#1E1E22] shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]"
-            aria-label="Toggle menu"
+            className="p-2 text-zinc-900 dark:text-zinc-100 border-2 border-black dark:border-white rounded-lg bg-[#FAFAF6] dark:bg-[#1E1E22] shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -84,16 +91,22 @@ export default function Navbar() {
             className="md:hidden border-t-2 border-dashed border-zinc-300 dark:border-zinc-700 bg-[#FAFAF6] dark:bg-[#141416] px-6 py-4 space-y-4 font-heading text-xl font-bold"
           >
             <button
-              onClick={() => scrollTo("work")}
-              className="block w-full text-left py-2 text-zinc-800 dark:text-zinc-200"
-            >
-              Work
-            </button>
-            <button
               onClick={() => scrollTo("about")}
               className="block w-full text-left py-2 text-zinc-800 dark:text-zinc-200"
             >
               About
+            </button>
+            <button
+              onClick={() => scrollTo("experience")}
+              className="block w-full text-left py-2 text-zinc-800 dark:text-zinc-200"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => scrollTo("work")}
+              className="block w-full text-left py-2 text-zinc-800 dark:text-zinc-200"
+            >
+              Work
             </button>
             <button
               onClick={() => scrollTo("skills")}
