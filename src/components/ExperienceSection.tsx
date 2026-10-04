@@ -9,7 +9,7 @@ const experiences = [
     title: "IT Infrastructure & Support",
     company: "The Alana Hotel and Conference Center",
     companyHighlightColor: "highlight-yellow",
-    date: "Feb 2025 – Jun 2025",
+    date: "Feb 2025 – Feb 2026",
     isCurrent: false,
     description: (
       <>
