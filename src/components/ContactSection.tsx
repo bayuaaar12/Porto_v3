@@ -40,7 +40,7 @@ export default function ContactSection() {
 
           {/* Subtext */}
           <p className="text-zinc-700 dark:text-zinc-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8">
-            Currently looking for a software engineering internship — always up for a chat about code, coffee, or campus projects.
+            Currently open for full-time Software Engineering roles & new opportunities — always up for a chat about code, coffee, or tech.
           </p>
 
           {/* Buttons */}

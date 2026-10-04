@@ -6,11 +6,11 @@ import { Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "IT Infrastructure & Support Intern",
+    title: "IT Infrastructure & Support",
     company: "The Alana Hotel and Conference Center",
     companyHighlightColor: "highlight-yellow",
-    date: "Feb 2025 – Present",
-    isCurrent: true,
+    date: "Feb 2025 – Jun 2025",
+    isCurrent: false,
     description: (
       <>
         Configured enterprise wireless access points across 20+ property zones, deployed structured cabling for building expansions while sustaining <strong className="font-bold underline decoration-amber-400 decoration-2">99.9% network uptime</strong>, and cut system downtime by <strong className="font-bold underline decoration-pink-400 decoration-2">25%</strong> through proactive monitoring.

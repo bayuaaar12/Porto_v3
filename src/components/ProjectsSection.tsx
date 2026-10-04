@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, FolderGit2, Filter } from "lucide-react";
+import { ExternalLink, Github, FolderGit2, Lock, Eye, X, Mail } from "lucide-react";
 
 interface Project {
   title: string;
@@ -10,7 +10,13 @@ interface Project {
   category: "Web & POS" | "Mobile Apps" | "Fintech";
   tags: string[];
   githubUrl?: string;
+  isPrivate?: boolean;
+  statusNote?: string;
   badgeColor: string;
+  details?: {
+    overview: string;
+    highlights: string[];
+  };
 }
 
 const projects: Project[] = [
@@ -44,10 +50,21 @@ const projects: Project[] = [
   {
     title: "Investkan — Investment Crowdfunding Platform",
     description:
-      "Fintech web app letting users discover and invest across sectors like F&B and Technology.",
+      "Fintech web app letting users discover and invest across sectors like F&B and Technology. Built with Laravel, featuring project listing, equity tracking, and secured investment workflows.",
     category: "Fintech",
     tags: ["Laravel", "PHP", "MySQL", "JavaScript"],
+    isPrivate: true,
+    statusNote: "Private Repo — Available on Request",
     badgeColor: "bg-[#FBCFE8] dark:bg-pink-400",
+    details: {
+      overview: "Investkan is an investment crowdfunding platform designed to bridge retail investors with high-growth businesses in F&B and Technology.",
+      highlights: [
+        "Private Codebase (Source code & demo walkthrough available upon request)",
+        "Laravel MVC architecture with dynamic investment catalog & progress tracking",
+        "Role-based access control for investors, business owners, and admins",
+        "Custom database schema design for transactions and pledge records"
+      ]
+    }
   },
 ];
 
@@ -55,6 +72,7 @@ const categories = ["All", "Web & POS", "Mobile Apps", "Fintech"] as const;
 
 export default function ProjectsSection() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [selectedModalProject, setSelectedModalProject] = useState<Project | null>(null);
 
   const filteredProjects =
     activeFilter === "All"
@@ -122,7 +140,7 @@ export default function ProjectsSection() {
                   </p>
                 </div>
 
-                {/* Bottom Section: Tags & GitHub Link */}
+                {/* Bottom Section: Tags & GitHub / Request Link */}
                 <div className="mt-6 pt-4 border-t-2 border-dashed border-zinc-200 dark:border-zinc-700 space-y-4">
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2">
@@ -151,9 +169,20 @@ export default function ProjectsSection() {
                       </a>
                     </div>
                   ) : (
-                    <div className="pt-1 text-xs font-mono text-zinc-500 flex items-center gap-1">
-                      <FolderGit2 className="w-3.5 h-3.5" />
-                      <span>Internal / Private Repo</span>
+                    <div className="pt-1 flex items-center justify-between gap-2 flex-wrap">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 dark:bg-amber-950/60 border border-amber-400 text-amber-900 dark:text-amber-200 rounded text-xs font-mono font-bold">
+                        <Lock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>Private Repo • Available on Request</span>
+                      </span>
+                      {project.details && (
+                        <button
+                          onClick={() => setSelectedModalProject(project)}
+                          className="inline-flex items-center gap-1 text-xs font-mono font-bold text-zinc-800 dark:text-zinc-200 underline decoration-pink-400 underline-offset-4 hover:text-pink-600 cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Overview / Demo</span>
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>
@@ -161,6 +190,79 @@ export default function ProjectsSection() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Modal for Private Project Details & Request */}
+        <AnimatePresence>
+          {selectedModalProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4"
+              onClick={() => setSelectedModalProject(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                onClick={(e) => e.stopPropagation()}
+                className="doodle-card p-6 sm:p-8 bg-white dark:bg-[#1E1E22] max-w-lg w-full relative space-y-5"
+              >
+                <button
+                  onClick={() => setSelectedModalProject(null)}
+                  className="absolute top-4 right-4 p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-white rounded-lg border border-transparent hover:border-black dark:hover:border-white transition-all cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-1 bg-pink-100 dark:bg-pink-950 text-pink-800 dark:text-pink-300 border border-pink-400 rounded text-xs font-mono font-bold flex items-center gap-1">
+                    <Lock className="w-3.5 h-3.5" /> Private Repository
+                  </span>
+                </div>
+
+                <h3 className="font-heading text-2xl font-extrabold text-zinc-900 dark:text-zinc-100">
+                  {selectedModalProject.title}
+                </h3>
+
+                <p className="text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                  {selectedModalProject.details?.overview}
+                </p>
+
+                <div className="space-y-2 bg-zinc-50 dark:bg-zinc-900 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                  <h4 className="font-heading text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                    Key Highlights
+                  </h4>
+                  <ul className="space-y-1.5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                    {selectedModalProject.details?.highlights.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-amber-500 font-bold">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-2 flex items-center justify-between gap-4">
+                  <a
+                    href="mailto:bayuanugrahramadan@gmail.com?subject=Request%20Code%20Access%20-%20Investkan%20Project"
+                    className="doodle-btn px-4 py-2.5 bg-[#FDE68A] hover:bg-[#fcd34d] text-zinc-900 text-xs font-heading font-extrabold flex items-center gap-2 cursor-pointer flex-1 justify-center"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>Request Code / Demo</span>
+                  </a>
+
+                  <button
+                    onClick={() => setSelectedModalProject(null)}
+                    className="doodle-btn px-4 py-2.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-heading font-bold cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
